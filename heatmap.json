@@ -1,0 +1,201 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ 
+
+    "data": {"url": "happinessScrapped.csv"},
+    "config": {
+      "axis": {
+        "tickBand": "extent",
+        "grid": true,
+        "gridColor": "#white",
+        "domainWidth": 1
+      },
+      "background": "#ffffff"
+    },  "params":[
+  
+       {
+        "name": "Continent_selection",
+   
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "Finland",
+            "Denmark",
+            "Brazil",
+            "Germany",
+            "Japan",
+            "Australia",
+            "Belgium",
+            "Mexico",
+            "Canada",
+            "China",
+            "Norway",
+            "Italy",
+            "Israel",
+            "Malaysia",
+            "Norway",
+            "Luxembourg",
+            "Russia",
+            "Sweden",
+            "United Kingdom",
+            "United States"
+          ],
+          "labels": [
+            "Show All",
+            "Finland",
+            "Denmark",
+            "Brazil",
+            "Germany",
+            "Japan",
+            "Australia",
+            "Belgium",
+            "Mexico",
+            "Canada",
+            "China",
+            "Norway",
+            "Italy",
+            "Israel",
+            "Malaysia",
+            "Norway",
+            "Luxembourg",
+            "Russia",
+            "Sweden",
+            "United Kingdom",
+            "United States"
+           
+          ],
+          "name": "Continent Selection: "
+        }
+      }
+  ],
+    "transform": [
+   
+      {"filter": "Continent_selection == null || datum.Country == Continent_selection"},
+      {"filter": "datum.Country =='Brazil' || datum.Country =='Germany' || datum.Country =='Finland' || datum.Country =='Denmark' || datum.Country =='Japan' || datum.Country =='Australia' || datum.Country =='Belgium' || datum.Country =='Mexico' || datum.Country =='Canada' || datum.Country =='China' || datum.Country =='Haiti' || datum.Country =='Italy'  || datum.Country =='Israel' || datum.Country =='Malaysia' || datum.Country =='Netherlands' || datum.Country =='New Zealand' || datum.Country =='Norway' || datum.Country =='Luxembourg' || datum.Country =='Russia' || datum.Country =='Sweden' || datum.Country =='Switzerland' || datum.Country =='United Kingdom' || datum.Country =='United States' " }],
+    "vconcat": [
+      {   "title":"Correlation between national freedom choice and happiness index (from 2018 to 2019)",
+        "width": "container",
+        "height": 500,
+        "transform": [{"filter": {"param": "time_brush"}}],
+        "encoding": { 
+          "x": {
+    "field": "Year",
+    "type": "ordinal",
+    "title": "Year",
+    "axis": {
+      "labelAngle": 0, "labelFontSize": 16,
+      "titleFontSize": 18,
+      "titleFont": "Roboto"
+
+      
+    
+    }
+  },
+  "y": {
+    "field": "Country",
+    "type": "nominal",
+    "axis": {
+      "labelFontSize": 16,
+      "titleFontSize": 18,
+      "titleFont": "Roboto"
+
+      
+    }
+  }
+},"layer": [
+  {"mark": {"type": "rect", "fill": "#fffcff", "stroke": "#939393"}},
+  {
+    "params": [
+      {"name": "highlight", "select": {"type": "point", "on": "mouseover"}}
+    ],
+    "mark": "rect",
+    "encoding": {
+      "color": {
+        "field": "freedom_of_choice",
+        "title":"Freedom of choice",
+        "type": "quantitative",
+        "legend": {
+          "labelFontSize": 16,
+          "symbolSize": 200,
+          "titleFontSize": 18,
+          "titleFont": "Roboto",
+          "labelFont": "Roboto",
+      
+          "titleColor": "#000000",
+          "labelColor": "#000000"
+            
+        },
+        "scale": {"scheme": "yellowgreenblue", "domain": [0.4,0.5,0.6,0.7,0.8,0.9],"type": "threshold"}
+      },
+      "tooltip": [
+        {"field": "Country", "type": "nominal"},
+        {"field": "Year", "type": "ordinal", "title": "Year"},
+        {"field": "Happiness Score", "type": "quantitative", "title": "Happiness score","format": ".2f"},
+        {"field": "freedom_of_choice", "type": "quantitative","format": ".2f"}
+      ],
+      "fillOpacity": {
+        "condition": [{"param": "highlight", "value": 1}],
+        "value": 0.2
+      }
+    }
+  },
+  {
+    "mark": {
+      "type": "text",
+      "align": "right",
+      "baseline": "middle",
+      "dx": 10,
+      "fontSize": 12,
+      "font": "Roboto"
+    },
+    "encoding": {
+      "text": {"field": "freedom_of_choice", "type": "quantitative", "format":".2f"},
+      "color": {
+        "condition": [
+        {
+          "test": "datum['freedom_of_choice'] >=0.6",
+          "value": "white"
+        }
+      ],
+      "value": "black"
+    }
+    }
+  }
+
+] 
+},  {
+  "width": "container",
+    "height": 60,
+    "mark": {"type":"line",
+    "color":"#171617"},
+    "title": {"text":"Year range to display:",
+     "fontSize":16, "font": "Roboto"},
+    "params": [
+      {
+        "name": "time_brush",
+        "select": {"type": "interval", "encodings": ["x"]}
+      }
+    ],
+    "encoding": {
+      "x": {"field": "Year", "axis": {"title": "Year",
+       "labelAngle": 0,
+        "titleFontSize":14, "labelFontSize":14, 
+        "titleFont": "Roboto",
+         "labelFont": "Roboto"}}
+    }
+}
+
+
+
+
+
+
+
+    ]
+    
+ 
+
+
+   
+}
