@@ -1,0 +1,212 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {"url": "happinessScrapped.csv"},
+
+  
+    "params": [
+      {
+        "name": "rank_country",
+        "value": 10,
+        "bind": {
+          "input": "range",
+          "min": 1,
+          "max": 20,
+          "step": 1,
+          "name": "Top N Countries"
+        }
+      }
+    ],
+    "transform": [
+      {
+        "sort": [{"field": "Happiness Score", "order": "descending"}],
+        "window": [{"op": "rank", "as": "happiness_rank"}],
+        "groupby": ["Year"]
+      },
+      {"filter": "datum.happiness_rank <= rank_country"}
+    ],
+    "vconcat": [
+      {
+        "title":"Top 20 Happiest Countries (form 2018 to2022)",
+        "width": "container",
+        "height": 500,
+        "transform": [{"filter": {"param": "time_brush"}}],
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "ordinal",
+            "axis": {
+              "labelAngle": 0,
+              "labelFontSize": 16,
+              "titleFontSize": 18,
+              "titleFont": "Roboto",
+              "labelFont": "Roboto",
+              "ticks":false,
+              "domain": false
+            },
+            "title": "Year"
+          },
+          "y": {
+            "field": "happiness_rank",
+            "type": "quantitative",
+            "title": "Rank of Happiness",
+            "sort": "descending",
+            "scale": {"domain": [0.5, {"expr": "rank_country+0.5"}]},
+            "axis": {
+              "labelAngle": 0,
+              "tickMinStep": 1,
+              "tickCount": {"expr": "rank_country"},
+              "labelFontSize": 16,
+              "titleFontSize": 18,
+              "titleFont": "Roboto",
+              "labelFont": "Roboto",
+              "ticks":false,
+              "domain": false
+            }
+           
+          }
+        },
+        "layer": [
+          {
+            "params": [
+              {
+                "name": "legend_filter",
+                "select": {"type": "point", "fields": ["Country"]},
+                "bind": "legend"
+              }
+            ],
+            "mark": {"type": "tick", "thickness": 5},
+            "encoding": {
+              "size": {
+                "condition": 
+                  {"param": "legend_filter", 
+                  "empty": false,
+                   "value": 20},
+                "value": 10
+              },
+              "color": {
+                "field": "Country",
+               "scale": {"scheme": "dark2"
+              },
+              "legend": {
+                "labelFontSize": 16,
+            "symbolSize": 100,
+            "titleFontSize": 18,
+            "titleFont": "Roboto",
+            "labelFont": "Roboto",
+        
+            "titleColor": "#000000",
+            "labelColor": "#000000"
+              }},
+              "tooltip": [
+                {"field": "Country", "type": "nominal"},
+                {"field": "happiness_rank", "type": "quantitative"},
+                {"field": "Happiness Score", "type": "quantitative", "title": "Happiness score","format": ".2f"}
+              ]
+            }
+          },
+          {
+            "mark": {"type": "line", "interpolate": "monotone"},
+            "encoding": {
+              "color": {
+                "field": "Country",
+                "scale": {"scheme": "dark2"},
+                "legend": null
+              },
+              "opacity": {
+                "condition": {"param": "legend_filter", "value": 1},
+                "value": 0.1
+              }
+            }
+          },{
+            "mark": {
+                "type": "text",
+                "align": "left",
+                "baseline": "top",
+                "dy": 20,
+                "dx": -100,
+                "fontStyle": "bold"
+            
+            },
+            "encoding": {
+                "text": {
+                    "field": "happiness_rank",
+                    "type": "quantitative",
+                    "condition": [
+                        {
+                            "test": "datum['happiness_rank'] == 2 && datum['Year'] == 2019",
+                            "value": [
+                                "Denmark entered the turning point in 2019 and continued to rank second."
+                            ]
+                        }
+                    ]
+                },
+                "color": {
+                    "value": "Black"
+                },
+                "opacity": {
+                    "condition": {
+                        "test": "datum['happiness_rank'] == 2 && datum['Year'] == 2019",
+                        "value": 1
+                    },
+                    "value": 0
+                }
+            }
+        }, {
+          "mark": {
+              "type": "text",
+              "align": "left",
+              "baseline": "top",
+              "dy": 30,
+              "dx": -300,
+            
+          "fontStyle": "bold"
+              
+          
+          },
+          "encoding": {
+              "text": {
+                  "field": "happiness_rank",
+                  "type": "quantitative",
+                  "condition": [
+                      {
+                          "test": "datum['happiness_rank'] == 1 && datum['Year'] == 2022",
+                          "value": [
+                              "Finland continues to rank first from 2018 to 2022."
+                          ]
+                      }
+                  ]
+              },
+              "color": {
+                  "value": "Black"
+              },
+              "opacity": {
+                  "condition": {
+                      "test": "datum['happiness_rank'] == 1 && datum['Year'] == 2022",
+                      "value": 1
+                  },
+                  "value": 0
+              }
+          }
+      }
+        ]
+      },
+      {
+        "width": "container",
+          "height": 60,
+          "mark": {"type":"line","color":"#000000"},
+          "title": {"text":"Year range to display:", "fontSize":16, "font": "Source Sans Pro"},
+          "params": [
+            {
+              "name": "time_brush",
+              "select": {"type": "interval", "encodings": ["x"]}
+            }
+          ],
+          "encoding": {
+            "x": {"field": "Year", "axis": {"title": "Year", "labelAngle": 0, "titleFontSize":14, "labelFontSize":14, "titleFont": "Source Sans Pro", "labelFont": "Source Sans Pro"}}
+          }
+      }
+    ],  "config": {
+      "background": "#ffffff",
+      "style": {"cell": {"stroke": "transparent"}}
+    }
+  }
