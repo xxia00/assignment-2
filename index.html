@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="vega_lite_vis.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" media="all">
+
+
+  
+</head>
+
+<body>
+   <div class="page">
+    <div class="conter">
+        <div >
+          <h1 class="title">Analysis of World Happiness Report</h1>
+      
+
+
+            <p class="desc">The <span class="bolded coloured2"> World Happiness Report </span> is a publication. According to the respondents' evaluation of their lives,
+               it contains happiness indexes and rankings of <span class="bolded coloured">140 countries </span>. 
+            The report is also related to four (quality) life factors, namely, the contribution of GDP to the happiness index , 
+            the impact of life expectancy on happiness, the impact of national freedom on the happiness index, and  the contribution of alcohol consumption to the happiness index.
+             As of  <span class="bolded coloured">March 2022 </span>,  <span class="bolded coloured2">Finland </span> has been rated as the happiest country in the world for <span class="bolded coloured2"> five consecutive times </span>. </p>
+        </div>
+      </div>
+      <hr style="height:3px;border-width:0;color:gray;background-color:black">
+
+    
+      <h2>World Map of Happiness</h2>
+        <p>
+            The <span class="bolded coloured2"> world map </span> shows the happiness scores of  <span class="bolded coloured">140 countries </span>from
+             <span class="bolded coloured"> 2018 </span> to <span class="bolded coloured">2022</span>.
+             The light red to dark red in the figure shows the level of happiness index. 
+             It can be seen from the figure that <span class="bolded coloured2"> Finland's</span> happiness index keeps the first place all
+              the year round (the happiness index is <span class="bolded coloured"> 7.63 </span> to <span class="bolded coloured"> 7.82 </span>), 
+             while <span class="bolded coloured2"> Afghanistan </span> keeps the last place 
+             (the happiness index is  <span class="bolded coloured"> 2.40 </span> to <span class="bolded coloured"> 3.63 </span> ).
+          </p>
+        
+          <br></br>
+          <div id="map_happiness" class="vis-container"></div>
+      
+     
+         
+     
+      <hr style="height:3px;border-width:0;color:gray;background-color:black">
+
+
+      
+          <h2>World Rank of Happiness</h2> 
+          <p>
+        
+
+
+            The <span class="bolded coloured2"> Bump Chart </span>shows the <span class="bolded coloured">top 20 </span> happiest countries in the world.
+            It shows that developed Australia has been hovering between<span class="bolded coloured"> 10th </span>and <span class="bolded coloured"> 12th </span>(<span class="bolded coloured">7.27 </span>to <span class="bolded coloured">7.16 </span>) for years, 
+            while for developed countries<span class="bolded coloured2"> Denmark </span> has been in second place at <span class="bolded coloured">7.60 </span>until the turning point in <span class="bolded coloured">2019 </span>.
+          </p>
+        
+
+      
+       
+          <br></br>
+          <div id="rank"  class="vis-container2"></div>
+
+
+    
+
+
+
+      <hr style="height:3px;border: width 2px;;color:gray;background-color:black">
+
+     
+          <h2>Contribution of alcohol consumption to happiness index</h2> 
+          <p>
+           
+
+
+            The <span class="bolded coloured2">radial chart </span>shows the correlation between <span class="bolded coloured2"> beer </span>and <span class="bolded coloured2"> wine </span>consumption and happiness index in <span class="bolded coloured"> 2016 </span>.
+             From this figure, it can be seen that <span class="bolded coloured2">Denmark's </span>per capita beer consumption is <span class="bolded coloured">346 </span> (happiness index is <span class="bolded coloured"> 6.99 </span>). 
+             On the contrary, <span class="bolded coloured2">Israel's</span> happiness index, which has only <span class="bolded coloured"> 63 </span>beer consumption per capita, is <span class="bolded coloured"> 7.27 </span>.
+              Therefore, the <span class="bolded coloured2"> happiness index </span> of countries with less <span class="bolded coloured2">beer </span> consumption per capita is on the high side.
+
+          </p>
+          <p>
+            On the other hand,<span class="bolded coloured2"> Switzerland's </span>per capita wine consumption is <span class="bolded coloured">280 </span>(happiness index is <span class="bolded coloured">7.51 </span>), 
+            while <span class="bolded coloured2"> Belgium's </span> per capita wine consumption is only <span class="bolded coloured">212 </span> (happiness index is<span class="bolded coloured"> 6.93 </span>). 
+            Therefore, it can be concluded that the<span class="bolded coloured2"> happiness index </span> of countries with high per capita<span class="bolded coloured2"> wine </span>consumption is on the high side.
+          </p>
+          <br></br>
+
+
+
+          <div id="scatter" class="vis-container1"></div>
+         <div id="scatter3" class="vis-container1"></div>
+
+    <hr style="height:3px;border: width 2px;;color:gray;background-color:black">
+
+  <h2>Contribution of life expectancy to happiness index</h2> 
+          <p>
+           
+
+            The <span class="bolded coloured2">scatter plot </span> shows that the correlation between <span class="bolded coloured2">life expectancy </span> and
+            <span class="bolded coloured2">happiness index</span> of countries in <span class="bolded coloured"> 10 regions </span> of the world will be in <span class="bolded coloured">2021 </span>. 
+            From this figure, it can be seen that <span class="bolded coloured2">Finland's</span> life expectancy is <span class="bolded coloured">72</span> (happiness index is <span class="bolded coloured">7.84 </span>), 
+            while Afghanistan's life expectancy is <span class="bolded coloured">52.49 </span> (happiness index is <span class="bolded coloured"> 2.52 </span> ). 
+            The trend of <span class="bolded coloured2">scatterplot </span> is inclined upward.
+             Therefore, it can be concluded that <span class="bolded coloured2">life expectancy </span> is in direct proportion to the <span class="bolded coloured2">happiness index </span>.
+              The higher the <span class="bolded coloured2">life expectancy </span>, the greater the <span class="bolded coloured2">happiness index </span>.
+          </p>
+        
+          <br></br>
+          <div id="scatterplot" class="vis-container5"></div>
+
+    <hr style="height:3px;border: width 2px;;color:gray;background-color:black">
+
+    <h2>Contribution of national freedom choice to happiness index</h2> 
+    <p>
+     
+
+
+
+
+      The <span class="bolded coloured2">heatmap </span> shows the relationship between the choice of degrees of <span class="bolded coloured2">freedom</span>
+       and  <span class="bolded coloured2">happiness index </span>  in selected countries from  <span class="bolded coloured">2018 </span> to <span class="bolded coloured">2022 </span>. 
+      It can be seen from the figure that <span class="bolded coloured2"> Australia</span> has the highest degree of freedom 
+      from<span class="bolded coloured"> 2020 </span>to <span class="bolded coloured"> 2021 </span>(happiness index is <span class="bolded coloured"> 7.22 </span> and <span class="bolded coloured"> 7.18</span> respectively).
+       However, most countries have the same changes with<span class="bolded coloured2"> Australia </span>. 
+       Therefore, it is concluded that the high degree of national <span class="bolded coloured2"> free choice </span>affects the change of <span class="bolded coloured2"> happiness index </span>. 
+       The high degree of <span class="bolded coloured2">free choice </span> and the high <span class="bolded coloured2">happiness index </span>.
+    </p>
+  
+    <br></br>
+    <div class="pure-u-4-5">
+      <div id="heatmap" class="vis-container4"></div>
+
+    </div>
+   
+
+
+      
+      
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
