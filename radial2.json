@@ -15,51 +15,47 @@
       "bind": {
         "input": "select",
         "options": [
-          null,
-          "Australia",
-          "Austria",
-          "Belgium",
-          "Brazil",
-          "Canada",
-          "Costa Rica",
+          null,   
           "Denmark",
           "Finland",
           "Germany",
+         
+        
           "Iceland",
-          "Ireland",
-          "Israel",
+          
+      
+        
           "Luxembourg",
           "Netherlands",
+         
           "New Zealand",
           "Norway",
           "Sweden",
-          "Switzerland",
-          "United States"
+          "Switzerland"
+          
         ],
         "labels": [
-          "Show All",
-          "Australia",
-            "Austria",
-            "Belgium",
-            "Brazil",
-            "Canada",
-            "Costa Rica",
-            "Denmark",
-            "Finland",
-            "Germany",
-            "Iceland",
-            "Ireland",
-            "Israel",
-            "Luxembourg",
-            "Netherlands",
-            "New Zealand",
-            "Norway",
-            "Sweden",
-            "Switzerland",
-            "United States"
+          "Show All",   
+          "Denmark",
+          "Finland",
+          "Germany",
          
+        
+          "Iceland",
+          
+      
+        
+          "Luxembourg",
+          "Netherlands",
+         
+          "New Zealand",
+          "Norway",
+          "Sweden",
+          "Switzerland"
+       
+           
         ],
-        "name": "Continent Selection: "
+        "name": "Country Selection: "
       }
      
     }
@@ -81,7 +77,73 @@
         "labelColor": "#000000"
       },
 
-      "scale": {"scheme":"dark2"
+      "scale": {
+        "domain": [
+         
+
+           
+               
+            
+          
+          "Denmark",
+          "Finland",
+          "Germany",
+         
+        
+          "Iceland",
+          
+      
+        
+          "Luxembourg",
+          "Netherlands",
+         
+          "New Zealand",
+          "Norway",
+          "Sweden",
+          "Switzerland"
+       
+         
+        
+          
+          
+       
+          ], "range": [
+           "#1170aa",
+             "#9467bd",
+             "#ff7f00",
+             "#59a14f",
+             "#f1ce63",
+             "#a65628",
+             "#57606c",
+             "#b6992d",
+             "#ff9d9a",
+             "#17becf"
+
+
+
+            
+         ]
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
       }
   },"opacity": {
@@ -96,7 +158,7 @@
       "tooltip": [
         {"field": "Country", "type": "nominal","title":"Country Name"},
    
-        {"field": "Beer_PerCapita", "type": "quantitative", "format": ".2f","title":"Beer_PerCapita"},
+        {"field": "Beer_PerCapita", "type": "quantitative", "format": ".2f","title":"Beer PerCapita"},
 
         {"field": "HappinessScore", "type": "quantitative", "format": ".2f","title":"Happiness Score"}
         
@@ -104,6 +166,28 @@
       
       ]
 },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "layer": [
   
 {"selection": {
@@ -116,15 +200,18 @@
 "mark": {"type": "arc", "innerRadius": 60}
 },{
   "mark": {"type": "text",
-  "dy":170,"dx":180, 
-  "fontStyle": "bold"},
+  "dy":10,
+  "dx":20, 
+  "fontStyle": "bold",
+  "font": "Roboto"
+},
   "encoding": {
     "text": {"field": " Country", "type": "nominal",
      "condition": [
       {
-        "test": "datum['Country']== 'Germany'",
+        "test": "datum['Country']== 'Luxembourg'",
         "value": [
-          " Germany consumes the most beer per capita."
+          " Switzerland's per capita consumption of beer is only 185."
         ]
       }
     ]
@@ -137,7 +224,7 @@
   
     "opacity": {
       "condition": {
-        "test": "datum.Country == 'Germany'",
+        "test": "datum.Country == 'Luxembourg'",
         "value": 1
       },
       "value": 0
