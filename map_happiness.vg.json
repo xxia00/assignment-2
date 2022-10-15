@@ -3,8 +3,9 @@
   "title":"World map happiness index (from 2018 to 2022)",
 
 
+
   "width":"container",
-  "height":600,
+  "height":500,
   "data":{
     "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
     "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
@@ -68,7 +69,7 @@
             "United Kingdom"
          
           ],
-          "name": "Continent Selection: "
+          "name": "Country Selection: "
         }
       }
   ],
@@ -199,9 +200,9 @@
         "mark": {
           "type": "text",
           "align": "left",
-          "dy": -30,
-          "dx": 180,
-          "fontStyle": "bold"
+          "dy": -120,
+          "dx": 130,
+          "fontStyle": "bold","font": "Roboto"
         },
         "encoding": {
           "text": {
@@ -231,9 +232,10 @@
         "mark": {
           "type": "text",
           "align": "left",
-          "dx":-140,
-          "dy": -200,
-          "fontStyle": "bold"
+          "dx":0,
+          "dy": -220,
+          "fontStyle": "bold",
+          "font": "Roboto"
           
         },
         "encoding": {
@@ -265,8 +267,9 @@
           "type": "text",
           "align": "left",
           "dx":190,
-          "dy": 200,
-          "fontStyle": "bold"
+          "dy": 120,
+          "fontStyle": "bold",
+          "font": "Roboto"
         },
         "encoding": {
           "text": {
