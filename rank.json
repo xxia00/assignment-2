@@ -10,7 +10,7 @@
         "bind": {
           "input": "range",
           "min": 1,
-          "max": 20,
+          "max": 10,
           "step": 1,
           "name": "Top N Countries"
         }
@@ -26,7 +26,7 @@
     ],
     "vconcat": [
       {
-        "title":"Top 20 Happiest Countries (form 2018 to2022)",
+        "title":"Top 10 Happiest Countries (form 2018 to2022)",
         "width": "container",
         "height": 500,
         "transform": [{"filter": {"param": "time_brush"}}],
@@ -80,12 +80,51 @@
                 "condition": 
                   {"param": "legend_filter", 
                   "empty": false,
-                   "value": 20},
+                   "value": 10},
                 "value": 10
               },
               "color": {
                 "field": "Country",
-               "scale": {"scheme": "dark2"
+               "scale": {"domain": [
+           
+               
+            
+          
+               "Denmark",
+               "Finland",
+              
+             
+               "Iceland",
+           
+               "Israel",
+               "Luxembourg",
+               "Netherlands",
+              
+               "New Zealand",
+               "Norway",
+               "Sweden",
+               "Switzerland"
+              
+             
+               
+               
+            
+               ], "range": [
+                "#1170aa",
+                  "#9467bd",
+                  "#ff7f00",
+                  "#59a14f",
+                  "#f1ce63",
+                  "#a65628",
+                  "#57606c",
+                  "#b6992d",
+                  "#ff9d9a",
+                  "#17becf"
+
+
+
+                 
+              ]
               },
               "legend": {
                 "labelFontSize": 16,
@@ -122,9 +161,9 @@
                 "type": "text",
                 "align": "left",
                 "baseline": "top",
-                "dy": 20,
-                "dx": -100,
-                "fontStyle": "bold"
+                "dy": 10,
+                "dx": -60,
+                "fontStyle": "bold","font": "Roboto"
             
             },
             "encoding": {
@@ -156,10 +195,11 @@
               "type": "text",
               "align": "left",
               "baseline": "top",
-              "dy": 30,
+              "dy": 10,
               "dx": -300,
             
-          "fontStyle": "bold"
+          "fontStyle": "bold",
+          "font": "Roboto"
               
           
           },
@@ -194,7 +234,7 @@
         "width": "container",
           "height": 60,
           "mark": {"type":"line","color":"#000000"},
-          "title": {"text":"Year range to display:", "fontSize":16, "font": "Source Sans Pro"},
+          "title": {"text":"Year range:", "fontSize":16, "font": "Roboto"},
           "params": [
             {
               "name": "time_brush",
@@ -202,7 +242,7 @@
             }
           ],
           "encoding": {
-            "x": {"field": "Year", "axis": {"title": "Year", "labelAngle": 0, "titleFontSize":14, "labelFontSize":14, "titleFont": "Source Sans Pro", "labelFont": "Source Sans Pro"}}
+            "x": {"field": "Year", "axis": {"title": "Year", "labelAngle": 0, "titleFontSize":14, "labelFontSize":14, "titleFont": "Roboto", "labelFont": "Roboto"}}
           }
       }
     ],  "config": {
