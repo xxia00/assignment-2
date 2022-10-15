@@ -65,7 +65,7 @@
             "United States"
            
           ],
-          "name": "Continent Selection: "
+          "name": "Country Selection: "
         }
       }
   ],
@@ -77,6 +77,8 @@
       {   "title":"Correlation between national freedom choice and happiness index (from 2018 to 2019)",
         "width": "container",
         "height": 500,
+       
+
         "transform": [{"filter": {"param": "time_brush"}}],
         "encoding": { 
           "x": {
@@ -103,7 +105,8 @@
       
     }
   }
-},"layer": [
+},
+"layer": [
   {"mark": {"type": "rect", "fill": "#fffcff", "stroke": "#939393"}},
   {
     "params": [
@@ -136,7 +139,7 @@
       ],
       "fillOpacity": {
         "condition": [{"param": "highlight", "value": 1}],
-        "value": 0.2
+        "value": 0.5
       }
     }
   },
@@ -162,14 +165,50 @@
     }
     }
   }
+  ,{
+    "mark": {
+      "type": "text",
+      "align": "left",
+      "dx":0,
+      "dy": -20,
+      "fontStyle": "bold","font": "Roboto","color": "#000000"
+    },
+    "encoding": {
+      "text": {
+        "field": "Country",
+        "type": "nominal",
+        "condition": [
+          {
+            "test": "datum['Country']== 'Australia'  && datum['Year'] == 2018",
+            "value": [
+              "Freedom of choice in Australia peaked in 2020."
+            ]
+          }
+        ]
+      },
+      "color": {
+        "value": "black"
+      },
+      "opacity": {
+        "condition": {
+          "test": "datum['Country']== 'Australia'  && datum['Year'] == 2018",
+          "value": 1
+        },
+        "value": 0
+      }
+    }
+  }
+
 
 ] 
-},  {
+}, 
+
+{
   "width": "container",
     "height": 60,
     "mark": {"type":"line",
     "color":"#171617"},
-    "title": {"text":"Year range to display:",
+    "title": {"text":"Year range:",
      "fontSize":16, "font": "Roboto"},
     "params": [
       {
